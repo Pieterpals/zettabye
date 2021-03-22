@@ -1,0 +1,24 @@
+<!-- dialog-box.component.html -->
+<h1 mat-dialog-title>Add a Movie</h1>
+<div mat-dialog-content>
+    <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+        <input placeholder="Movie Title" matInput [(ngModel)]="local_data.title">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'; else elseTemplateelse">
+        <input placeholder="Amount of Episode" matInput [(ngModel)]="local_data.episode">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'; else elseTemplateelse">
+        <input placeholder="Movie information URL" matInput [(ngModel)]="local_data.info">
+    </mat-form-field>
+    <mat-form-field *ngIf="action != 'Delete'; else elseTemplateelse">
+        <input placeholder="Movie watch URL" matInput [(ngModel)]="local_data.watch">
+    </mat-form-field>
+    <ng-template #elseTemplate>
+        Sure to delete <b>{{local_data.title}}</b>?
+    </ng-template>
+    <ng-template #elseTemplateelse></ng-template>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="doAction()">{{action}}</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>
